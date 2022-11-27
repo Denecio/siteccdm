@@ -54,31 +54,31 @@ let linhas = [];
 let num = 115;
 let tracos = 100;
 let pg;
-let fontsize=300;
-let ccdm;
+let fontsize=400;
+let txt="ccdm"; //texto que é apresentado
 let len;
 let myFont;
 let counter=0;
 let a=0;
 
 function preload() {
-  myFont = loadFont('Matiz.ttf');
+  myFont = loadFont('Jost-Black.ttf');
 }
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  //background(255);
   frameRate(60);
   textSize(fontsize);
-  ccdm="ccdm";
-  len=textWidth(ccdm)+textWidth(ccdm)*0.15;
-  pg = createGraphics(len, fontsize);
+  let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
+  len=bbox.w+20;
+  alt=bbox.h+10;
+  pg = createGraphics(len, alt);
   pg.background(125);
   pg.textSize(fontsize);
   pg.textFont(myFont);
-  pg.textAlign(CENTER,CENTER);
   pg.fill(0);
-  pg.text(ccdm, pg.width/2,pg.height/2);
+  pg.textAlign(CENTER);
+  pg.text(txt, pg.width/2, fontsize-bbox.y+5);
   
   strokeWeight(1);
   
