@@ -1,7 +1,6 @@
 let txt="ccdm"; //texto que é apresentado
 let num = 100; //número de linhas total  
 let tracos = 100; //número de tracos por linha
-let andamento=5; //quanto é que cada linha anda para o lado
 let fontsize=400;
 
 let linhas = [];
@@ -55,7 +54,7 @@ function draw(){
     for (let x = 0; x < cols; x++) {
       let index = x + y * cols;
       let angle = noise(xoff, yoff, zoff) * TWO_PI * 4;
-      let v = p5.Vector.fromAngle(angle, 0.1);
+      let v = p5.Vector.fromAngle(angle, 1);
       field[index] = v;
       xoff += inc;
       stroke(0, 50);
@@ -92,7 +91,7 @@ function criarlinhas(){
   let cor2=color(0);
 
   if(cor.toString()==cor2.toString()){
-    linhas.push(new Linha(tracos, andamento, x, y, 2));
+    linhas.push(new Linha(tracos, x, y, 2));
   }
 }
 
@@ -102,24 +101,23 @@ function mousePressed(){
 
 class Linha {
 
-  constructor(cenas, range, x, y, vida) {
-    this.cenas = cenas;
-    this.range = range;
+  constructor(tam, x, y, vida) {
+    this.tam = tam;
     this.pos=[];
     this.vel=[];
     this.acc = createVector(0, 0);
     this.vida = vida;
     this.morrer=false;
-    for ( let i = 0; i < this.cenas; i++ ) {
+    for ( let i = 0; i < this.tam; i++ ) {
       this.pos[i] = createVector(x, y);
       this.vel[i] = createVector(random(-1,1), random(-1,1));
     }
   }
   
   desenha(vectors){
-    let ult=this.cenas-1;
+    let ult=this.tam-1;
 
-    for ( let i = 1; i < this.cenas; i++ ) {
+    for ( let i = 1; i < this.tam; i++ ) {
       this.pos[i - 1].x=this.pos[i].x;
       this.pos[i - 1].y=this.pos[i].y;
       this.vel[i - 1].x=this.vel[i].x;
@@ -132,10 +130,10 @@ class Linha {
     var force = vectors[index];
     this.acc.add(force);
     
-    //this.vel[this.cenas-1] = this.vel[this.cenas-1].add(this.acc);
+    //this.vel[this.tam-1] = this.vel[this.tam-1].add(this.acc);
    
     this.vel[ult].add(this.acc);
-    this.vel[ult].limit(this.maxspeed);
+    this.vel[ult].limit(3);
 
 
     if(this.vida>0){
@@ -158,8 +156,8 @@ class Linha {
     }
 
     // Draw a line connecting the points
-    for ( let j = 1; j < this.cenas; j++ ) {
-      let val = j / this.cenas * 204.0 + 51;
+    for ( let j = 1; j < this.tam; j++ ) {
+      let val = j / this.tam * 204.0 + 51;
       stroke(val);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
