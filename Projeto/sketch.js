@@ -1,5 +1,5 @@
 let txt="ccdm"; //texto que é apresentado
-let num = 115; //número de linhas total  
+let num = 100; //número de linhas total  
 let tracos = 100; //número de tracos por linha
 let andamento=5; //quanto é que cada linha anda para o lado
 let fontsize=400;
@@ -11,13 +11,21 @@ let myFont;
 let counter=0;
 let a=0;
 
+let field=[];
+let inc = 0.1;
+let scl = 10;
+let cols, rows;
+let zoff = 0;
+
+
 function preload() {
   myFont = loadFont('Jost-Black.ttf');
 }
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  frameRate(60);
+  cols = floor(width / scl);
+  rows = floor(height / scl);
   textSize(fontsize);
   let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
   len=bbox.w+20;
@@ -40,16 +48,32 @@ function setup() {
 
 function draw(){
   clear();
+
+  let yoff = 0;
+  for (let y = 0; y < rows; y++) {
+    let xoff = 0;
+    for (let x = 0; x < cols; x++) {
+      let index = x + y * cols;
+      let angle = noise(xoff, yoff, zoff) * TWO_PI * 4;
+      let v = p5.Vector.fromAngle(angle, 0.1);
+      field[index] = v;
+      xoff += inc;
+      stroke(0, 50);
+    }
+    yoff += inc;
+
+    zoff += 0.0003;
+  }
+
   let len=linhas.length;
   
   while(linhas.length<len+counter)  {
     criarlinhas();
   }
-  
-  print("Depois de adicionar: " + linhas.length);
+
   counter=0;
   for(let i = len-1; i>=0; i--){
-    linhas[i].desenha();
+    linhas[i].desenha(field);
     if(linhas[i].vida==-tracos){
       linhas.splice(i,1);
     }
@@ -72,37 +96,55 @@ function criarlinhas(){
   }
 }
 
+function mousePressed(){
+  noLoop();
+}
+
 class Linha {
 
   constructor(cenas, range, x, y, vida) {
     this.cenas = cenas;
     this.range = range;
-    this.ax=[];
-    this.ay=[];
+    this.pos=[];
+    this.vel=[];
+    this.acc = createVector(0, 0);
     this.vida = vida;
     this.morrer=false;
     for ( let i = 0; i < this.cenas; i++ ) {
-      this.ax[i] = x;
-      this.ay[i] = y;
+      this.pos[i] = createVector(x, y);
+      this.vel[i] = createVector(random(-1,1), random(-1,1));
     }
   }
   
-  desenha(){
+  desenha(vectors){
+    let ult=this.cenas-1;
+
     for ( let i = 1; i < this.cenas; i++ ) {
-      this.ax[i - 1] = this.ax[i];
-      this.ay[i - 1] = this.ay[i];
+      this.pos[i - 1].x=this.pos[i].x;
+      this.pos[i - 1].y=this.pos[i].y;
+      this.vel[i - 1].x=this.vel[i].x;
+      this.vel[i - 1].y=this.vel[i].y;
     }
     
-    let a =random(-this.range, this.range);
-    let b =random(-this.range, this.range);
+    var x = floor(this.pos[ult].x / scl);
+    var y = floor(this.pos[ult].y / scl);
+    var index = x + y * cols;
+    var force = vectors[index];
+    this.acc.add(force);
+    
+    //this.vel[this.cenas-1] = this.vel[this.cenas-1].add(this.acc);
    
+    this.vel[ult].add(this.acc);
+    this.vel[ult].limit(this.maxspeed);
+
+
     if(this.vida>0){
-      this.ax[this.cenas - 1] += a;
-      this.ay[this.cenas - 1] += b;
+      this.pos[ult].add(this.vel[ult]);
     }
+
+    this.acc.mult(0);
     // Constrain all points to the screen
-    
-    this.c=pg.get(this.ax[this.cenas - 1],this.ay[this.cenas - 1]);
+    this.c=pg.get(this.pos[ult].x,this.pos[ult].y);
     this.c1=color(this.c);
     this.c2=color(125);
     
@@ -119,7 +161,9 @@ class Linha {
     for ( let j = 1; j < this.cenas; j++ ) {
       let val = j / this.cenas * 204.0 + 51;
       stroke(val);
-      line(this.ax[j - 1]+(width/2-len/2), this.ay[j - 1]+(height/2-fontsize/2), this.ax[j]+(width/2-len/2), this.ay[j]+(height/2-fontsize/2));
+      line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
   }
+
+  
 }
