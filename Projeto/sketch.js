@@ -101,9 +101,9 @@ function criarlinhas(){
   }
 }
 
-function mousePressed(){
+/*function mousePressed(){
   noLoop();
-}
+}*/
 
 class Linha {
 
