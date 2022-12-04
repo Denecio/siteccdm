@@ -116,7 +116,7 @@ class Linha {
     this.morrer=false;
     for ( let i = 0; i < this.tam; i++ ) {
       this.pos[i] = createVector(x, y);
-      this.vel[i] = createVector(random(-1,1), random(-1,1));
+      this.vel[i] = createVector(0, 0);
     }
   }
   
