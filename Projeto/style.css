@@ -2,7 +2,6 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
 }
 
 body{
@@ -18,4 +17,8 @@ canvas {
 
 #conteudo{
   align-self: flex-start;
+}
+
+h1{
+  color: white;
 }

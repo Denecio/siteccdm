@@ -57,7 +57,13 @@ function draw(){
       let v = p5.Vector.fromAngle(angle, 1);
       field[index] = v;
       xoff += inc;
-      stroke(0, 50);
+      stroke(255, 50);
+      /*push();
+      translate(x * scl, y * scl);
+      rotate(v.heading());
+      strokeWeight(1);
+      line(0, 0, scl, 0);
+      pop();*/
     }
     yoff += inc;
 
@@ -91,13 +97,13 @@ function criarlinhas(){
   let cor2=color(0);
 
   if(cor.toString()==cor2.toString()){
-    linhas.push(new Linha(tracos, x, y, 2));
+    linhas.push(new Linha(tracos, x, y, 5));
   }
 }
 
-function mousePressed(){
+/*function mousePressed(){
   noLoop();
-}
+}*/
 
 class Linha {
 
@@ -110,7 +116,7 @@ class Linha {
     this.morrer=false;
     for ( let i = 0; i < this.tam; i++ ) {
       this.pos[i] = createVector(x, y);
-      this.vel[i] = createVector(random(-1,1), random(-1,1));
+      this.vel[i] = createVector(0, 0);
     }
   }
   
@@ -161,7 +167,5 @@ class Linha {
       stroke(val);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
-  }
-
-  
+  } 
 }
