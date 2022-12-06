@@ -23,3 +23,10 @@ canvas {
 h1{
   color: white;
 }
+
+.menu{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
