@@ -1,7 +1,7 @@
 let txt="ccdm"; //texto que é apresentado
 let num = 190; //número de linhas total  
 let tracos = 50; //número de tracos por linha
-let fontsize=400;
+let fontsize=500;
 
 let linhas = [];
 let pg;
@@ -75,7 +75,6 @@ function draw(){
   while(linhas.length<len+counter && linhas.length<500)  {
     criarlinhas();
   }
-  print(linhas.length);
 
   counter=0;
   for(let i = len-1; i>=0; i--){
@@ -140,7 +139,7 @@ class Linha {
     //this.vel[this.tam-1] = this.vel[this.tam-1].add(this.acc);
    
     this.vel[ult].add(this.acc);
-    this.vel[ult].limit(3);
+    this.vel[ult].limit(4);
 
 
     if(this.vida>0){

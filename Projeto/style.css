@@ -11,13 +11,14 @@ body{
   background-color: black;
 }
 
-canvas {
+#canvas {
   display: block;
+  position: fixed;
 }
 
 #conteudo{
-  align-self: flex-start;
   color: white;
+  margin-top: 100vh;
 }
 
 h1{
