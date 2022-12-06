@@ -1,6 +1,6 @@
 let txt="ccdm"; //texto que é apresentado
-let num = 100; //número de linhas total  
-let tracos = 100; //número de tracos por linha
+let num = 190; //número de linhas total  
+let tracos = 50; //número de tracos por linha
 let fontsize=400;
 
 let linhas = [];
@@ -72,9 +72,10 @@ function draw(){
 
   let len=linhas.length;
   
-  while(linhas.length<len+counter)  {
+  while(linhas.length<len+counter && linhas.length<500)  {
     criarlinhas();
   }
+  print(linhas.length);
 
   counter=0;
   for(let i = len-1; i>=0; i--){
@@ -97,7 +98,7 @@ function criarlinhas(){
   let cor2=color(0);
 
   if(cor.toString()==cor2.toString()){
-    linhas.push(new Linha(tracos, x, y, 5));
+    linhas.push(new Linha(tracos, x, y, 2));
   }
 }
 
