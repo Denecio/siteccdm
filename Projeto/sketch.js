@@ -75,7 +75,6 @@ function draw(){
   while(linhas.length<len+counter && linhas.length<500)  {
     criarlinhas();
   }
-  print(linhas.length);
 
   counter=0;
   for(let i = len-1; i>=0; i--){
