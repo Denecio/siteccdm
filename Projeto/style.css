@@ -6,8 +6,13 @@
   text-decoration: none;
 }
 
+html{
+  font-family: Roboto Condensed;
+  scroll-behavior: smooth;
+}
+
 body{
-  border: 2px solid pink;
+  /*border: 2px solid pink;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +25,7 @@ canvas {
 
 #conteudo{
   color: white;
-  margin: 20px;
+  margin: 20px 40px;
 }
 
 h1{
@@ -36,35 +41,43 @@ h1{
 
 a{
   color: white;
-  font-size: 20px;
+}
+
+.menu a{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.menu a:hover{
+  color: #d01c1f;
+  font-size: 2em;
 }
 
 #sobre{
   display:flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin: 30px 0px;
+  margin: 30px 0px 0px 0px;
+}
+
+#sobre p{
+  text-align: justify;
+}
+
+#oradores{
+  margin: 30px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
 }
 
 #speakers{
   display:flex;
   flex-direction:column;
-  
-  margin: 30px 0px;
-}
-
-#contactos{
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 30px 0px;
 }
 
 .orador{
   display:grid;
   grid-template-columns: repeat(6,1fr);
   gap: 50px;
-  margin: 20px 0px;
+  padding: 0px 0px 50px 0px;
 }
 
 .p1{
@@ -76,4 +89,34 @@ a{
   grid-column: 2 span;
   width:100%;
   height: auto;
+}
+
+#contactos{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 30px 100px;
+}
+
+#cont{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.infra{
+  padding: 20px 0px;
+}
+
+.infra p{
+  padding:20px 0px;
+  font-weight: light;
+}
+
+.infra h3{
+  font-size:2em;
+}
+
+.infra a:hover{
+  color:#d01c1f;
 }
