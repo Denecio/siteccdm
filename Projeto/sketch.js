@@ -1,7 +1,7 @@
 let txt="ccdm"; //texto que é apresentado
-let num = 190; //número de linhas total  
+let num = 200; //número de linhas total  
 let tracos = 50; //número de tracos por linha
-let fontsize=400;
+let fontsize= 400;
 
 let linhas = [];
 let pg;
