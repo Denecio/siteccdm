@@ -1,7 +1,7 @@
 let txt="ccdm"; //texto que é apresentado
-let num = 200; //número de linhas total  
-let tracos = 50; //número de tracos por linha
+let num = 350; //número de linhas total  
 let fontsize= 400;
+let vida=2;
 
 let linhas = [];
 let pg;
@@ -42,7 +42,6 @@ function setup() {
   while(linhas.length<num){
       criarlinhas();
   }
-  //image(pg,0,0);
 }
 
 function draw(){
@@ -70,19 +69,25 @@ function draw(){
   }
 
   let len=linhas.length;
-  
-  while(linhas.length<len+counter && linhas.length<500)  {
+  while(linhas.length<len+counter && linhas.length<num)  {
     criarlinhas();
   }
+
+
+  /*let a=floor(frameRate());
+  fill(255,0,0);
+  textSize(10);
+  text(a, 10, 10);
+  text(len, 10, 20);*/
 
   counter=0;
   for(let i = len-1; i>=0; i--){
     linhas[i].desenha(field);
-    if(linhas[i].vida==-tracos){
-      linhas.splice(i,1);
-    }
-    if (linhas[i].vida==0){
+    if (linhas[i].morrer){
       counter++;
+    }
+    if(linhas[i].pos.length==1 && linhas[i].morrer){
+      linhas.splice(i,1);
     }
   }
 }
@@ -96,37 +101,32 @@ function criarlinhas(){
   let cor2=color(0);
 
   if(cor.toString()==cor2.toString()){
-    linhas.push(new Linha(tracos, x, y, 2));
+    linhas.push(new Linha(x, y, vida));
   }
 }
 
-/*function mousePressed(){
+function mousePressed(){
   noLoop();
-}*/
+}
 
 class Linha {
 
-  constructor(tam, x, y, vida) {
-    this.tam = tam;
+  constructor(x, y, vida) {
     this.pos=[];
     this.vel=[];
     this.acc = createVector(0, 0);
     this.vida = vida;
     this.morrer=false;
-    for ( let i = 0; i < this.tam; i++ ) {
-      this.pos[i] = createVector(x, y);
-      this.vel[i] = createVector(0, 0);
-    }
+    this.pos.push(createVector(x, y));
+    this.vel.push(createVector(0, 0));
   }
   
   desenha(vectors){
-    let ult=this.tam-1;
-
-    for ( let i = 1; i < this.tam; i++ ) {
-      this.pos[i - 1].x=this.pos[i].x;
-      this.pos[i - 1].y=this.pos[i].y;
-      this.vel[i - 1].x=this.vel[i].x;
-      this.vel[i - 1].y=this.vel[i].y;
+    let ult=this.pos.length-1;
+    if(!this.morrer){
+      this.pos.push(createVector(this.pos[ult].x, this.pos[ult].y));
+      this.vel.push(createVector(this.vel[ult].x, this.vel[ult].y));
+      ult++;
     }
     
     var x = floor(this.pos[ult].x / scl);
@@ -134,8 +134,6 @@ class Linha {
     var index = x + y * cols;
     var force = vectors[index];
     this.acc.add(force);
-    
-    //this.vel[this.tam-1] = this.vel[this.tam-1].add(this.acc);
    
     this.vel[ult].add(this.acc);
     this.vel[ult].limit(3);
@@ -155,14 +153,18 @@ class Linha {
     if(this.c1.toString()==this.c2.toString()){
       this.morrer=true;
     }
+
     
     if(this.morrer){
       this.vida-=1;
+      this.pos.splice(0,1);
+      this.vel.splice(0,1);
     }
 
     // Draw a line connecting the points
-    for ( let j = 1; j < this.tam; j++ ) {
-      let val = j / this.tam * 204.0 + 51;
+    for ( let j = 1; j < this.pos.length; j++ ) {
+      let val = j*255 / this.pos.length;
+      print(val);
       stroke(val);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
