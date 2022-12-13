@@ -19,7 +19,7 @@ let zoff = 0;
 let f;
 
 function preload() {
-  myFont = loadFont('Jost-Black.ttf');
+  myFont = loadFont('../Projeto/fontes/Jost-Black.ttf');
 }
 
 function setup() {
@@ -161,7 +161,7 @@ class Linha {
 
     // Draw a line connecting the points
     for ( let j = 1; j < this.pos.length; j++ ) {
-      strokeWeight(1);
+      strokeWeight(2);
       let val = j*255 / this.pos.length;
       stroke(val+50);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
