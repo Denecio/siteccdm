@@ -12,16 +12,18 @@ let a=0;
 
 let field=[];
 let inc = 0.1;
-let scl = 10;
+let scl = 20;
 let cols, rows;
 let zoff = 0;
 
+let f;
 
 function preload() {
   myFont = loadFont('Jost-Black.ttf');
 }
 
 function setup() {
+  noCursor();
   createCanvas(window.innerWidth, window.innerHeight);
   cols = floor(width / scl);
   rows = floor(height / scl);
@@ -37,14 +39,16 @@ function setup() {
   pg.textAlign(CENTER);
   pg.text(txt, pg.width/2, fontsize-bbox.y+5);
   
-  strokeWeight(1);
-  
+  f=new fl();
+
   while(linhas.length<num){
       criarlinhas();
   }
 }
 
 function draw(){
+  colorMode(RGB);
+
   clear();
   let yoff = 0;
   for (let y = 0; y < rows; y++) {
@@ -67,12 +71,10 @@ function draw(){
 
     zoff += 0.0003;
   }
-
-  let len=linhas.length;
-  while(linhas.length<len+counter && linhas.length<num)  {
+  
+  while(linhas.length<num)  {
     criarlinhas();
   }
-
 
   /*let a=floor(frameRate());
   fill(255,0,0);
@@ -80,16 +82,14 @@ function draw(){
   text(a, 10, 10);
   text(len, 10, 20);*/
 
-  counter=0;
-  for(let i = len-1; i>=0; i--){
+  for(let i = linhas.length-1; i>=0; i--){
     linhas[i].desenha(field);
-    if (linhas[i].morrer){
-      counter++;
-    }
     if(linhas[i].pos.length==1 && linhas[i].morrer){
       linhas.splice(i,1);
     }
   }
+
+  f.desenha();
 }
 
 function criarlinhas(){
@@ -163,10 +163,34 @@ class Linha {
 
     // Draw a line connecting the points
     for ( let j = 1; j < this.pos.length; j++ ) {
+      strokeWeight(1);
       let val = j*255 / this.pos.length;
-      print(val);
       stroke(val);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
   } 
+}
+
+class fl{
+
+  constructor() {
+    this.pos=[];
+    for(let i=0; i<10; i++){
+      this.pos[i] = createVector(mouseX, mouseY);
+    }
+  }
+
+  desenha(){
+    colorMode(HSB,360,100,100);
+
+    this.pos.push(createVector(mouseX, mouseY));
+    this.pos.splice(0,1);
+
+    for ( let i = 1; i < this.pos.length; i++ ) {
+      strokeWeight(3);
+      let val = (82*i)/ this.pos.length;
+      stroke(359,87,val);
+      line(this.pos[i - 1].x, this.pos[i - 1].y, this.pos[i].x, this.pos[i].y);
+    }
+  }
 }
