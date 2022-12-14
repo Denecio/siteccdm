@@ -1,5 +1,5 @@
 let txt="ccdm"; //texto que é apresentado
-let num = 400; //número de linhas total  
+let num = 225; //número de linhas total  
 let fontsize= 450;
 let vida=2;
 
@@ -50,35 +50,16 @@ function draw(){
   colorMode(RGB);
 
   clear();
-  let yoff = 0;
-  for (let y = 0; y < rows; y++) {
-    let xoff = 0;
-    for (let x = 0; x < cols; x++) {
-      let index = x + y * cols;
-      let angle = noise(xoff, yoff, zoff) * TWO_PI * 4;
-      let v = p5.Vector.fromAngle(angle, 1);
-      field[index] = v;
-      xoff += inc;
-      /*stroke(255, 50);
-      push();
-      translate(x * scl, y * scl);
-      rotate(v.heading());
-      strokeWeight(1);
-      line(0, 0, scl, 0);
-      pop();*/
-    }
-    yoff += inc;
-  }
-  zoff += 0.003;
+
   while(linhas.length<num)  {
     criarlinhas();
   }
 
   /*let a=floor(frameRate());
   fill(255,0,0);
-  textSize(10);
-  text(a, 10, 10);
-  text(linhas.length, 10, 20);*/
+  textSize(40);
+  text(a, 10, 40);
+  text(linhas.length, 10, 80);*/
 
   for(let i = linhas.length-1; i>=0; i--){
     linhas[i].desenha(field);
@@ -87,7 +68,7 @@ function draw(){
     }
   }
 
-  f.desenha();
+  //f.desenha();
 }
 
 function criarlinhas(){
@@ -103,9 +84,9 @@ function criarlinhas(){
   }
 }
 
-/*function mousePressed(){
+function mousePressed(){
   noLoop();
-}*/
+}
 
 class Linha {
 
@@ -117,6 +98,7 @@ class Linha {
     this.morrer=false;
     this.pos.push(createVector(x, y));
     this.vel.push(createVector(0, 0));
+    this.xoff = random(1000);
   }
   
   desenha(vectors){
@@ -127,11 +109,8 @@ class Linha {
       ult++;
     }
     
-    var x = floor(this.pos[ult].x / scl);
-    var y = floor(this.pos[ult].y / scl);
-    var index = x + y * cols;
-    var force = vectors[index];
-    this.acc.add(force);
+    let angle = noise(this.xoff) * TWO_PI * 4;
+    this.acc= p5.Vector.fromAngle(angle, 1);
    
     this.vel[ult].add(this.acc);
     this.vel[ult].limit(3);
@@ -142,7 +121,7 @@ class Linha {
     }
 
     this.acc.mult(0);
-    // Constrain all points to the screen
+
     this.c=pg.get(this.pos[ult].x,this.pos[ult].y);
     this.c1=color(this.c);
     this.c2=color(125);
@@ -161,11 +140,12 @@ class Linha {
 
     // Draw a line connecting the points
     for ( let j = 1; j < this.pos.length; j++ ) {
-      strokeWeight(2);
+      strokeWeight(1);
       let val = j*255 / this.pos.length;
       stroke(val+50);
       line(this.pos[j - 1].x+(width/2-len/2), this.pos[j - 1].y+(height/2-fontsize/2), this.pos[j].x+(width/2-len/2), this.pos[j].y+(height/2-fontsize/2));
     }
+    this.xoff += 0.02;
   } 
 }
 
