@@ -10,12 +10,6 @@ let myFont;
 let counter=0;
 let a=0;
 
-let field=[];
-let inc = 0.1;
-let scl = 20;
-let cols, rows;
-let zoff = 0;
-
 let f;
 
 function preload() {
@@ -29,8 +23,6 @@ function setup() {
   let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
   len=bbox.w+20;
   alt=bbox.h+10;
-  cols = ceil(len / scl);
-  rows = ceil(alt / scl);
   pg = createGraphics(len, alt);
   pg.background(125);
   pg.textSize(fontsize);
@@ -62,7 +54,7 @@ function draw(){
   text(linhas.length, 10, 80);*/
 
   for(let i = linhas.length-1; i>=0; i--){
-    linhas[i].desenha(field);
+    linhas[i].desenha();
     if(linhas[i].pos.length==1 && linhas[i].morrer){
       linhas.splice(i,1);
     }
@@ -101,7 +93,7 @@ class Linha {
     this.xoff = random(1000);
   }
   
-  desenha(vectors){
+  desenha(){
     let ult=this.pos.length-1;
     if(!this.morrer){
       this.pos.push(createVector(this.pos[ult].x, this.pos[ult].y));
