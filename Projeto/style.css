@@ -19,22 +19,20 @@ body{
   background-color: black;
 }
 
-body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: black;
+#conteudo{
+  margin: 0px 200px;
+  border:1px solid red;
 }
 
-/*#canvas {
+#canvas {
   display: block;
   position: fixed;
   z-index: -1;
-}*/
+}
 
 #cenas{
   color: white;
-  /*margin-top: 100vh;*/
+  margin-top: 100vh;
 }
 
 h1{
@@ -43,8 +41,11 @@ h1{
 
 
 header{
+  /*background-color: black;*/
   position: sticky;
   top: 0px;
+  padding: 20px 0px;
+  background-color: black;
 }
 
 .menu{
@@ -59,13 +60,12 @@ a{
 }
 
 .menu a{
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
 }
 
 .menu a:hover{
   color: #d01c1f;
-  font-size: 2em;
 }
 
 #sobre{
@@ -74,8 +74,16 @@ a{
   margin: 30px 0px 0px 0px;
 }
 
-#sobre p{
-  text-align: justify;
+#sobre p, #oradores p{
+  text-align: left;
+  font-size: 1.5em;
+  /*background-color: rgba(0,0,0,0.5);*/
+  padding:10px 0px;
+}
+
+
+.titulo{
+  font-size:2em;
 }
 
 #oradores{
@@ -89,20 +97,26 @@ a{
 }
 
 .orador{
-  display:grid;
-  grid-template-columns: repeat(6,1fr);
-  gap: 50px;
-  padding: 0px 0px 50px 0px;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  border: 1px solid red;
+  padding: 50px 0px 50px 0px;
+
 }
 
 .p1{
-  grid-column: 4 span;
-  text-align: justify;
+  padding: 20px 0px 0px 0px;
+
+}
+
+.p1 h4{
+  font-size:2em;
 }
 
 .img1{
-  grid-column: 2 span;
-  width:100%;
+  width:400px;
+  
   height: auto;
 }
 
@@ -110,7 +124,7 @@ a{
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 30px 100px;
+  margin: 30px 0px;
 }
 
 #cont{
