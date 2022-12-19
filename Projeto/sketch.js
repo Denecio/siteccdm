@@ -18,7 +18,8 @@ function preload() {
 
 function setup() {
   noCursor();
-  createCanvas(window.innerWidth, window.innerHeight);
+  var canvas=createCanvas(window.innerWidth, window.innerHeight);
+  canvas.parent("canvas");
   textSize(fontsize);
   let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
   len=bbox.w+20;

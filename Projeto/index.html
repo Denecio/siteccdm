@@ -4,19 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>CCDM</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
     <script src="libraries/p5.min.js"></script> 
+    <script src="sketch.js"></script>
     <!--<script src="libraries/p5.sound.min.js"></script> -->
   </head>
 
   <body>
-    <main id="canvas">
-    </main>
+    <div id="canvas">
+    </div>
 
-    <div id="cenas">
+    <div id="conteudo">
       <header>
         <nav>
           <ul  class="menu">
@@ -28,7 +28,7 @@
       </header>
 
 
-      <main id="conteudo">
+      <main id="informacao">
         
         <section id="sobre">
 
@@ -39,7 +39,7 @@
     
         </section>
 
-        <section id="oradores">
+        <section>
         <h2 class="titulo"> Oradores </h2>
         <div id="speakers">
           <article class="orador">
@@ -74,15 +74,11 @@
         </div>
         </section>
         
-          
-
       </main>
 
-      <footer>
-        <section id="contactos"> 
-          <h2 class="titulo">Contacts </h2>
+      <footer id="contactos">
+        <h2 class="titulo">Contacts </h2>
           <div id="cont">
-
             <article class="infra">
               <h3> DEI/FCTUC</h3>
               <p>
@@ -135,10 +131,8 @@
             </article>
 
           </div>
-
-        </section>
       </footer>
     </div>
-    <script src="sketch.js"></script>
   </body>
+  <script src="script.js"></script>
 </html>

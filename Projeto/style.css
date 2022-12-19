@@ -6,22 +6,32 @@
   text-decoration: none;
 }
 
+@font-face {
+  font-family: RCBold;
+  src: url("../Projeto/fontes/RobotoCondensed-Bold.ttf");
+}
+
+@font-face {
+  font-family: RCLight;
+  src: url("../Projeto/fontes/RobotoCondensed-Light.ttf");
+}
+
+@font-face {
+  font-family: RCRegular;
+  src: url("../Projeto/fontes/RobotoCondensed-Regular.ttf");
+}
+
 html{
-  font-family: Roboto Condensed;
+  font-family: RCBold;
   scroll-behavior: smooth;
 }
 
-
-
 body{
+  /*border: 2px solid pink;*/
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: black;
-}
-
-#conteudo{
-  margin: 0px 200px;
 }
 
 #canvas {
@@ -30,9 +40,10 @@ body{
   z-index: -1;
 }
 
-#cenas{
+#conteudo{
   color: white;
   margin-top: 100vh;
+  width:1100px;
 }
 
 h1{
@@ -44,6 +55,9 @@ header{
   position: sticky;
   top: 0px;
   padding: 20px 0px;
+}
+
+.background{
   background-color: black;
 }
 
@@ -84,7 +98,6 @@ a{
 }
 
 .texto{
-  width:1100px;
   text-align: left;
   font-size: 2.5em;
   padding:10px 0px;
@@ -119,17 +132,11 @@ a{
   height: auto;
 }
 
-footer{
-  display:flex;
-  justify-content: center;
-}
-
 #contactos{
   display:flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 30px 0px;
-  width:1100px;
 }
 
 #cont{
@@ -156,8 +163,6 @@ footer{
 }
 
 @media only screen and (max-width:1225px) {
-  #contactos{
-    width:700px;
-  }
+
   
 }
