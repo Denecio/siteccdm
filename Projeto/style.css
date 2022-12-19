@@ -74,6 +74,10 @@ a{
   margin: 30px 0px 0px 0px;
 }
 
+#sobre h2{
+  margin: 100px 0px 0px 0px;
+}
+
 #sobre p, #oradores p{
   text-align: left;
   font-size: 1.5em;
