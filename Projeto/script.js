@@ -1,4 +1,4 @@
-var altura = document.querySelector("#canvas");
+var altura = window.innerHeight;
 console.log(altura);
 
 document.addEventListener("scroll",funcaoScroll);
