@@ -26,6 +26,8 @@ html{
   scroll-behavior: smooth;
 }
 
+
+
 body{
   /*border: 2px solid pink;*/
   display: flex;
@@ -36,7 +38,6 @@ body{
 
 #conteudo{
   margin: 0px 200px;
-  border:1px solid red;
 }
 
 #canvas {
@@ -53,7 +54,6 @@ body{
 h1{
   color: white;
 }
-
 
 header{
   /*background-color: black;*/
@@ -73,17 +73,17 @@ header{
   gap: 36px;
 }
 
-a{
-  color: white;
-}
-
 .menu a{
-  font-size: 2.5em;
+  font-size: 3.5em;
   font-weight: bold;
 }
 
 .menu a:hover{
   color: #d01c1f;
+}
+
+a{
+  color: white;
 }
 
 #sobre{
@@ -92,22 +92,26 @@ a{
   margin: 30px 0px 0px 0px;
 }
 
-#sobre p, #oradores p{
-  text-align: left;
-  font-size: 1.5em;
-  /*background-color: rgba(0,0,0,0.5);*/
-  padding:10px 0px;
+#sobre h2{
+  margin: 100px 0px 0px 0px;
 }
-
 
 .titulo{
-  font-size:2em;
-}
-
-#oradores{
+  font-size:3em;
   margin: 30px 0px 0px 0px;
   padding: 20px 0px 0px 0px;
 }
+
+.texto{
+  width:1100px;
+  text-align: left;
+  font-size: 2.5em;
+  padding:10px 0px;
+  overflow: scroll;
+  overflow-x:hidden;
+  height: 500px;
+}
+
 
 #speakers{
   display:flex;
@@ -118,24 +122,25 @@ a{
   display:flex;
   flex-direction: column;
   justify-content:center;
-  border: 1px solid red;
   padding: 50px 0px 50px 0px;
-
 }
 
 .p1{
   padding: 20px 0px 0px 0px;
-
 }
 
 .p1 h4{
-  font-size:2em;
+  font-size:2.5em;
 }
 
 .img1{
   width:400px;
-  
   height: auto;
+}
+
+footer{
+  display:flex;
+  justify-content: center;
 }
 
 #contactos{
@@ -143,6 +148,7 @@ a{
   flex-direction: column;
   justify-content: flex-start;
   margin: 30px 0px;
+  width:1100px;
 }
 
 #cont{
@@ -166,4 +172,11 @@ a{
 
 .infra a:hover{
   color:#d01c1f;
+}
+
+@media only screen and (max-width:1225px) {
+  #contactos{
+    width:700px;
+  }
+  
 }
