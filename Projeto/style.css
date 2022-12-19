@@ -21,7 +21,6 @@ body{
 
 #conteudo{
   margin: 0px 200px;
-  border:1px solid red;
 }
 
 #canvas {
@@ -39,7 +38,6 @@ h1{
   color: white;
 }
 
-
 header{
   /*background-color: black;*/
   position: sticky;
@@ -55,10 +53,6 @@ header{
   gap: 36px;
 }
 
-a{
-  color: white;
-}
-
 .menu a{
   font-size: 2.5em;
   font-weight: bold;
@@ -66,6 +60,10 @@ a{
 
 .menu a:hover{
   color: #d01c1f;
+}
+
+a{
+  color: white;
 }
 
 #sobre{
@@ -78,22 +76,20 @@ a{
   margin: 100px 0px 0px 0px;
 }
 
-#sobre p, #oradores p{
+.titulo{
+  font-size:2em;
+  margin: 30px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
+}
+
+.texto{
+  width:1100px;
   text-align: left;
   font-size: 1.5em;
   /*background-color: rgba(0,0,0,0.5);*/
   padding:10px 0px;
 }
 
-
-.titulo{
-  font-size:2em;
-}
-
-#oradores{
-  margin: 30px 0px 0px 0px;
-  padding: 20px 0px 0px 0px;
-}
 
 #speakers{
   display:flex;
@@ -104,14 +100,11 @@ a{
   display:flex;
   flex-direction: column;
   justify-content:center;
-  border: 1px solid red;
   padding: 50px 0px 50px 0px;
-
 }
 
 .p1{
   padding: 20px 0px 0px 0px;
-
 }
 
 .p1 h4{
@@ -120,8 +113,12 @@ a{
 
 .img1{
   width:400px;
-  
   height: auto;
+}
+
+footer{
+  display:flex;
+  justify-content: center;
 }
 
 #contactos{
@@ -129,6 +126,7 @@ a{
   flex-direction: column;
   justify-content: flex-start;
   margin: 30px 0px;
+  width:1100px;
 }
 
 #cont{
