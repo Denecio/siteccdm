@@ -9,24 +9,6 @@
 @font-face {
   font-family: RCBold;
   src: url("../Projeto/fontes/RobotoCondensed-Bold.ttf");
-<<<<<<< HEAD
-=======
-}
-
-@font-face {
-  font-family: RCLight;
-  src: url("../Projeto/fontes/RobotoCondensed-Light.ttf");
-}
-
-@font-face {
-  font-family: RCRegular;
-  src: url("../Projeto/fontes/RobotoCondensed-Regular.ttf");
-}
-
-html{
-  font-family: RCBold;
-  scroll-behavior: smooth;
->>>>>>> 8b19919d3cc33383346547089dfd49909686df29
 }
 
 @font-face {
