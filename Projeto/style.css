@@ -6,8 +6,13 @@
   text-decoration: none;
 }
 
+@font-face {
+  font-family: RCBold;
+  src: url("../Projeto/fontes/RobotoCondensed-Bold.ttf");
+}
+
 html{
-  font-family: Roboto Condensed;
+  font-family: RCBold;
   scroll-behavior: smooth;
 }
 
@@ -45,6 +50,9 @@ header{
   position: sticky;
   top: 0px;
   padding: 20px 0px;
+}
+
+.background{
   background-color: black;
 }
 
