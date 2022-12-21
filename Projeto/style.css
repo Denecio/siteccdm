@@ -64,7 +64,7 @@ header{
   display:flex;
   flex-direction: row;
   justify-content: center;
-  gap: 36px;
+  /*gap: 36px;*/
   font-family: RCBold;
 }
 
@@ -83,23 +83,23 @@ a{
 #sobre{
   display:flex;
   flex-direction: column;
-  margin: 30px 0px 0px 0px;
+  /*margin: 30px 0px 0px 0px;*/
 }
 
 .titulo{
   font-size:3em;
   font-family: RCBold;
-  margin: 130px 0px 0px 0px;
+  /*margin: 130px 0px 0px 0px;*/
 }
 
 #contactos h2{
-  margin:0px
+  /*margin:0px*/
 }
 
 .texto{
   text-align: left;
   font-size: 2.5em;
-  margin:20px 0px;
+  /*margin:20px 0px;*/
   overflow: scroll;
   overflow-x:hidden;
   height: 500px;
@@ -107,7 +107,7 @@ a{
 }
 
 #oradores{
-  margin:50px 0px;
+  /*margin:50px 0px;*/
 }
 
 #speakers{
@@ -119,17 +119,17 @@ a{
   display:flex;
   flex-direction: column;
   justify-content:center;
-  padding: 0px 0px 150px 0px;
+  /*padding: 0px 0px 150px 0px;*/
 }
 
 .p1{
-  padding: 20px 0px 0px 0px;
+  /*padding: 20px 0px 0px 0px;*/
 }
 
 .p1 h4{
   font-size:2.5em;
   font-family: RCBold;
-  padding: 20px 0px 0px 0px;
+  /*padding: 20px 0px 0px 0px;*/
 }
 
 .img1{
@@ -150,11 +150,11 @@ a{
 }
 
 .infra{
-  padding: 20px 0px;
+  /*padding: 20px 0px;*/
 }
 
 .infra p{
-  padding:20px 0px;
+  /*padding:20px 0px;*/
   font-family: RCLight;
 }
 
