@@ -43,7 +43,8 @@ body{
 #conteudo{
   color: white;
   margin-top: 100vh;
-  width:1100px;
+  margin-left:17%;
+  margin-right: 17%;
 }
 
 h1{
@@ -63,7 +64,7 @@ header{
 .menu{
   display:flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   /*gap: 36px;*/
   font-family: RCBold;
 }
@@ -84,12 +85,13 @@ a{
   display:flex;
   flex-direction: column;
   /*margin: 30px 0px 0px 0px;*/
+  margin: 150px 0px 0px 0px;
 }
 
 .titulo{
   font-size:3em;
   font-family: RCBold;
-  /*margin: 130px 0px 0px 0px;*/
+  margin: 50px 0px;
 }
 
 #contactos h2{
@@ -107,7 +109,7 @@ a{
 }
 
 #oradores{
-  /*margin:50px 0px;*/
+  margin:200px 0px;
 }
 
 #speakers{
@@ -119,7 +121,7 @@ a{
   display:flex;
   flex-direction: column;
   justify-content:center;
-  /*padding: 0px 0px 150px 0px;*/
+  margin: 0px 0px 150px 0px;
 }
 
 .p1{
@@ -137,10 +139,15 @@ a{
   height: auto;
 }
 
+.nome{
+  padding: 30px 0px;
+}
+
 #contactos{
   display:flex;
   flex-direction: column;
   justify-content: center;
+  margin:300px 0px 50px 0px;
 }
 
 #cont{
@@ -154,8 +161,8 @@ a{
 }
 
 .infra p{
-  /*padding:20px 0px;*/
   font-family: RCLight;
+  font-size:1em;
 }
 
 .infra h3{
@@ -167,7 +174,172 @@ a{
   color:#d01c1f;
 }
 
-@media only screen and (max-width:1225px) {
+@media only screen and (max-width:500px){
 
+  #conteudo{
+    width:90%;
+  }
+
+  .menu{
+    flex-direction: column;
+  }
+
+  .menu a{
+    font-size: 2.5em;
+  }
+
+  .titulo{
+    font-size:2.5em;
+    margin: 25px 0px;
+  }
+
+  #cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .infra h3{
+    font-size:2em;
+  }
+
+  .infra p{
+    font-size:1em;
+  }
+
+  .texto{
+    font-size: 1.25em;
+  }
   
+}
+
+@media only screen and (min-width:500px) and (max-width:700px){
+
+  #conteudo{
+    margin-left:10%;
+    margin-right: 10%;
+  }
+
+  .menu{
+    flex-direction: column;
+  }
+
+  .menu a{
+    font-size: 2.5em;
+  }
+
+  .titulo{
+    font-size:2.5em;
+    margin: 25px 0px;
+  }
+
+  #cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .infra h3{
+    font-size:2em;
+  }
+
+  .infra p{
+    font-size:1em;
+  }
+
+  .texto{
+    font-size: 1.5em;
+  }
+  
+}
+
+@media only screen and (min-width:700px) and (max-width:800px) {
+
+  .menu{
+    flex-direction: column;
+  }
+
+  .menu a{
+    font-size: 2.5em;
+  }
+
+  .titulo{
+    font-size:2.5em;
+    margin: 25px 0px;
+  }
+
+  #cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .infra h3{
+    font-size:2em;
+  }
+
+  .infra p{
+    font-size:1em;
+  }
+
+  .texto{
+    font-size: 1.75em;
+  }
+  
+}
+
+@media only screen and (min-width:800px) and (max-width:950px) {
+  .menu a{
+    font-size: 2.5em;
+  }
+
+  .titulo{
+    font-size:2.5em;
+    margin: 25px 0px;
+  }
+
+  #cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .infra h3{
+    font-size:2em;
+  }
+
+  .infra p{
+    font-size:1em;
+  }
+  
+  .texto{
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width:950px) and (max-width:1250px) {
+  .menu a{
+    font-size: 3em;
+  }
+
+  .titulo{
+    font-size:3em;
+    margin: 25px 0px;
+  }
+
+  .infra h3{
+    font-size:1.5em;
+  }
+
+  .infra p{
+    font-size:0.75em;
+  }
+  
+  .texto{
+    font-size: 2.25em;
+  }
 }
