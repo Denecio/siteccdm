@@ -137,6 +137,7 @@ a{
 .img1{
   width:400px;
   height: auto;
+  align-self: center;
 }
 
 .nome{
