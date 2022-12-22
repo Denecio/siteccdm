@@ -43,8 +43,8 @@ body{
 #conteudo{
   color: white;
   margin-top: 100vh;
-  margin-left:17%;
-  margin-right: 17%;
+  margin-left:20%;
+  margin-right:20%;
 }
 
 h1{
@@ -96,11 +96,11 @@ a{
 
 .texto{
   text-align: left;
-  font-size: 2.5em;
+  font-size: 2em;
   /*margin:20px 0px;*/
   overflow: scroll;
   overflow-x:hidden;
-  height: 500px;
+  height: 400px;
   font-family: RCLight;
 }
 
