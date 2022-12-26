@@ -62,7 +62,7 @@ const ccdm = ( q ) => {
 
   let txt="ccdm"; //texto que é apresentado
   let num = 225; //número de linhas total  
-  let fontsize= 450;
+  let fontsize= 550;
   let vida=2;
 
   let linhas = [];
