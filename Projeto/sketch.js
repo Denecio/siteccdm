@@ -1,8 +1,9 @@
 const ccdm = ( q ) => {
   let txt="ccdm"; //texto que é apresentado
-  let num = 225; //número de linhas total  
+  let num; //número de linhas total  
   let fontsize;
   let vida=2;
+  let ang=4;
 
   let linhas = [];
   let pg;
@@ -31,7 +32,13 @@ const ccdm = ( q ) => {
     pg.textAlign(q.CENTER);
     pg.text(txt, pg.width/2, fontsize-bbox.y+5);
     
-
+    if(window.innerWidth>700){
+      num=225;
+      ang=4;
+    } else {
+      num=150;
+      ang=2;
+    }
     while(linhas.length<num){
         q.criarlinhas();
     }
@@ -69,13 +76,38 @@ const ccdm = ( q ) => {
     let cor2=q.color(0);
 
     if(cor.toString()==cor2.toString()){
-      linhas.push(new Linha(x, y, vida));
+      linhas.push(new Linha(x, y, vida, ang));
     }
   }
 
+  /*q.windowResized = function() {
+    if(window.innerWidth>700){
+      num=225;
+      vida=2;
+      ang=4;
+    } else {
+      num=150;
+      vida=1;
+      ang=2;
+    }
+    q.resizeCanvas(window.innerWidth, window.innerHeight);
+    fontsize=window.innerWidth*0.4;
+    q.textSize(fontsize);
+    let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
+    len=bbox.w+20;
+    alt=bbox.h+10;
+    pg = q.createGraphics(len, alt);
+    pg.background(125);
+    pg.textSize(fontsize);
+    pg.textFont(myFont);
+    pg.fill(0);
+    pg.textAlign(q.CENTER);
+    pg.text(txt, pg.width/2, fontsize-bbox.y+5);
+  }*/
+
   class Linha {
 
-    constructor(x, y, vida) {
+    constructor(x, y, vida, ang) {
       this.pos=[];
       this.vel=[];
       this.acc = q.createVector(0, 0);
@@ -84,6 +116,7 @@ const ccdm = ( q ) => {
       this.pos.push(q.createVector(x, y));
       this.vel.push(q.createVector(0, 0));
       this.xoff = q.random(1000);
+      this.ang = ang;
     }
     
     desenha(){
@@ -94,11 +127,15 @@ const ccdm = ( q ) => {
         ult++;
       }
       
-      let angle = q.noise(this.xoff) * q.TWO_PI * 4;
+      let angle = q.noise(this.xoff) * q.TWO_PI * ang;
       this.acc= p5.Vector.fromAngle(angle, 1);
      
       this.vel[ult].add(this.acc);
-      this.vel[ult].limit(3);
+      if(window.innerWidth>700){
+        this.vel[ult].limit(3);
+      } else {
+        this.vel[ult].limit(1);
+      }
   
   
       if(this.vida>0){
