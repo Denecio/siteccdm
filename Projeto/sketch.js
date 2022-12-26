@@ -13,7 +13,7 @@ const ccdm = ( q ) => {
   let a=0;
 
   q.preload= function() {
-    myFont = q.loadFont('../Projeto/fontes/Jost-Black.ttf');
+    myFont = q.loadFont("Projeto/fontes/Jost-Black.ttf');
   }
 
   q.setup = function() {
