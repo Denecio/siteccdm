@@ -43,8 +43,8 @@ body{
 #conteudo{
   color: white;
   margin-top: 100vh;
-  margin-left:17%;
-  margin-right: 17%;
+  margin-left:20%;
+  margin-right:20%;
 }
 
 h1{
@@ -67,6 +67,7 @@ header{
   justify-content: space-between;
   /*gap: 36px;*/
   font-family: RCBold;
+  padding: 10px 0px;
 }
 
 .menu a{
@@ -96,11 +97,11 @@ a{
 
 .texto{
   text-align: left;
-  font-size: 2.5em;
+  font-size: 2em;
   /*margin:20px 0px;*/
   overflow: scroll;
   overflow-x:hidden;
-  height: 500px;
+  height: 400px;
   font-family: RCLight;
 }
 
@@ -169,12 +170,23 @@ a{
     width:90%;
   }
 
+  header{
+    width:100%;
+    position:fixed;
+    top: 0px;
+  }
+
   .menu{
+    padding:10px 0px 20px 0px;
     flex-direction: column;
   }
 
   .menu a{
     font-size: 2.5em;
+  }
+
+  #sobre{
+    margin: 0px;
   }
 
   .titulo{
@@ -210,8 +222,53 @@ a{
     margin-right: 10%;
   }
 
+  header{
+    width:100%;
+    position:fixed;
+    top: 0px;
+  }
+
   .menu{
     flex-direction: column;
+    padding:40px 0px 20px 0px;
+
+  }
+
+  .menu a{
+    font-size: 2.5em;
+  }
+
+  .titulo{
+    font-size:2.5em;
+    margin: 25px 0px;
+  }
+
+  #cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .infra h3{
+    font-size:2em;
+  }
+
+  .infra p{
+    font-size:1em;
+  }
+
+  .texto{
+    font-size: 1.25em;
+  }
+  
+}
+
+@media only screen and (min-width:700px) and (max-width:800px) {
+
+  .menu{
+    flex-direction: column;
+    padding:20px 0px;
   }
 
   .menu a{
@@ -244,42 +301,6 @@ a{
   
 }
 
-@media only screen and (min-width:700px) and (max-width:800px) {
-
-  .menu{
-    flex-direction: column;
-  }
-
-  .menu a{
-    font-size: 2.5em;
-  }
-
-  .titulo{
-    font-size:2.5em;
-    margin: 25px 0px;
-  }
-
-  #cont{
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
-  }
-
-  .infra h3{
-    font-size:2em;
-  }
-
-  .infra p{
-    font-size:1em;
-  }
-
-  .texto{
-    font-size: 1.75em;
-  }
-  
-}
-
 @media only screen and (min-width:800px) and (max-width:950px) {
   .menu a{
     font-size: 2.5em;
@@ -306,7 +327,7 @@ a{
   }
   
   .texto{
-    font-size: 2em;
+    font-size: 1.75em;
   }
 }
 
@@ -329,6 +350,6 @@ a{
   }
   
   .texto{
-    font-size: 2.25em;
+    font-size: 2em;
   }
 }
