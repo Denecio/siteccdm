@@ -93,6 +93,7 @@ a{
   font-size:3em;
   font-family: RCBold;
   margin: 50px 0px;
+  padding-top: 100px;
 }
 
 .texto{
@@ -192,6 +193,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
+    padding-top:190px;
   }
 
   #cont{
@@ -241,6 +243,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
+    padding-top:220px;
   }
 
   #cont{
@@ -264,7 +267,12 @@ a{
   
 }
 
-@media only screen and (min-width:700px) and (max-width:800px) {
+@media only screen and (min-width:700px) and (max-width:840px) {
+
+  #conteudo{
+    margin-left:13%;
+    margin-right: 13%;
+  }
 
   .menu{
     flex-direction: column;
@@ -278,6 +286,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
+    padding-top:200px;
   }
 
   #cont{
@@ -301,7 +310,7 @@ a{
   
 }
 
-@media only screen and (min-width:800px) and (max-width:950px) {
+@media only screen and (min-width:840px) and (max-width:990px) {
   .menu a{
     font-size: 2.5em;
   }
@@ -309,6 +318,8 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
+    padding-top: 80px;
+
   }
 
   #cont{
@@ -331,7 +342,7 @@ a{
   }
 }
 
-@media only screen and (min-width:950px) and (max-width:1250px) {
+@media only screen and (min-width:990px) and (max-width:1250px) {
   .menu a{
     font-size: 3em;
   }
