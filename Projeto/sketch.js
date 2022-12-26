@@ -1,4 +1,78 @@
 const ccdm = ( q ) => {
+  let txt="ccdm"; //texto que é apresentado
+  let num = 225; //número de linhas total  
+  let fontsize;
+  let vida=2;
+
+  let linhas = [];
+  let pg;
+  let len;
+  let myFont;
+  let counter=0;
+  let a=0;
+
+  q.preload= function() {
+    myFont = q.loadFont('../Projeto/fontes/Jost-Black.ttf');
+  }
+
+  q.setup = function() {
+    q.noCursor();
+    q.createCanvas(window.innerWidth, window.innerHeight);
+    fontsize=window.innerWidth*0.4;
+    q.textSize(fontsize);
+    let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
+    len=bbox.w+20;
+    alt=bbox.h+10;
+    pg = q.createGraphics(len, alt);
+    pg.background(125);
+    pg.textSize(fontsize);
+    pg.textFont(myFont);
+    pg.fill(0);
+    pg.textAlign(q.CENTER);
+    pg.text(txt, pg.width/2, fontsize-bbox.y+5);
+    
+
+    while(linhas.length<num){
+        q.criarlinhas();
+    }
+  };
+
+  q.draw = function() {
+    q.colorMode(q.RGB);
+
+    q.clear();
+  
+    while(linhas.length<num)  {
+      q.criarlinhas();
+    }
+  
+    /*let a=floor(frameRate());
+    fill(255,0,0);
+    textSize(40);
+    text(a, 10, 40);
+    text(linhas.length, 10, 80);*/
+  
+    for(let i = linhas.length-1; i>=0; i--){
+      linhas[i].desenha();
+      if(linhas[i].pos.length==1 && linhas[i].morrer){
+        linhas.splice(i,1);
+      }
+    }
+  };
+
+  q.criarlinhas = function(){
+    const x = q.random(len);
+    const y = q.random(fontsize);
+
+    let c=pg.get(x,y);
+    let cor=q.color(c);
+    let cor2=q.color(0);
+
+    if(cor.toString()==cor2.toString()){
+      linhas.push(new Linha(x, y, vida));
+    }
+  }
+
   class Linha {
 
     constructor(x, y, vida) {
@@ -58,79 +132,6 @@ const ccdm = ( q ) => {
       }
       this.xoff += 0.02;
     } 
-  }
-
-  let txt="ccdm"; //texto que é apresentado
-  let num = 225; //número de linhas total  
-  let fontsize= 450;
-  let vida=2;
-
-  let linhas = [];
-  let pg;
-  let len;
-  let myFont;
-  let counter=0;
-  let a=0;
-
-  q.preload= function() {
-    myFont = q.loadFont('../Jost-Black.ttf');
-  }
-
-  q.setup = function() {
-    q.noCursor();
-    q.createCanvas(window.innerWidth, window.innerHeight);
-    q.textSize(fontsize);
-    let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
-    len=bbox.w+20;
-    alt=bbox.h+10;
-    pg = q.createGraphics(len, alt);
-    pg.background(125);
-    pg.textSize(fontsize);
-    pg.textFont(myFont);
-    pg.fill(0);
-    pg.textAlign(q.CENTER);
-    pg.text(txt, pg.width/2, fontsize-bbox.y+5);
-    
-
-    while(linhas.length<num){
-        q.criarlinhas();
-    }
-  };
-
-  q.draw = function() {
-    q.colorMode(q.RGB);
-
-    q.clear();
-  
-    while(linhas.length<num)  {
-      q.criarlinhas();
-    }
-  
-    /*let a=floor(frameRate());
-    fill(255,0,0);
-    textSize(40);
-    text(a, 10, 40);
-    text(linhas.length, 10, 80);*/
-  
-    for(let i = linhas.length-1; i>=0; i--){
-      linhas[i].desenha();
-      if(linhas[i].pos.length==1 && linhas[i].morrer){
-        linhas.splice(i,1);
-      }
-    }
-  };
-
-  q.criarlinhas = function(){
-    const x = q.random(len);
-    const y = q.random(fontsize);
-
-    let c=pg.get(x,y);
-    let cor=q.color(c);
-    let cor2=q.color(0);
-
-    if(cor.toString()==cor2.toString()){
-      linhas.push(new Linha(x, y, vida));
-    }
   }
 };
 
