@@ -78,8 +78,8 @@ const ccdm = ( q ) => {
     }
   }
 
-  /*q.windowResized = function() {
-    if(window.innerWidth>700){
+  q.windowResized = function() {
+    if(window.innerWidth>840){
       num=225;
       vida=2;
       ang=4;
@@ -87,6 +87,9 @@ const ccdm = ( q ) => {
       num=150;
       vida=1;
       ang=2;
+    }
+    for(let i = linhas.length-1; i>=0; i--){
+      linhas.splice(i,1);
     }
     q.resizeCanvas(window.innerWidth, window.innerHeight);
     fontsize=window.innerWidth*0.4;
@@ -101,7 +104,7 @@ const ccdm = ( q ) => {
     pg.fill(0);
     pg.textAlign(q.CENTER);
     pg.text(txt, pg.width/2, fontsize-bbox.y+5);
-  }*/
+  }
 
   class Linha {
 
@@ -129,7 +132,7 @@ const ccdm = ( q ) => {
       this.acc= p5.Vector.fromAngle(angle, 1);
      
       this.vel[ult].add(this.acc);
-      if(window.innerWidth>700){
+      if(window.innerWidth>840){
         this.vel[ult].limit(3);
       } else {
         this.vel[ult].limit(1);
