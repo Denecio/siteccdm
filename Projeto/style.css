@@ -5,6 +5,7 @@
   list-style: none;
   text-decoration: none;
   line-height: 1.3em;
+  
 }
 
 @font-face {
@@ -34,6 +35,10 @@ body{
   background-color: black;
 }
 
+::-webkit-scrollbar {
+  display:none;
+}
+
 #canvas {
   display: block;
   position: fixed;
@@ -51,10 +56,18 @@ h1{
   color: white;
 }
 
+/*header{
+  background-color: black;
+  position: sticky;
+  top: 0px;
+}*/
+
 header{
   /*background-color: black;*/
   position: sticky;
   top: 0px;
+  transition:  top 600ms;
+  transition-timing-function: ease-in-out;
 }
 
 .background{
