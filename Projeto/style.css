@@ -53,8 +53,10 @@ h1{
 
 header{
   /*background-color: black;*/
-  position: sticky;
+  position: fixed;
   top: 0px;
+  transition:  top 500ms;
+  transition-timing-function: ease-in-out;
 }
 
 .background{
