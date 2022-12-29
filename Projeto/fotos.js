@@ -58,17 +58,26 @@ const fotos = ( p ) => {
   let numero = 100;
 
   p.preload= function() {
-    img = p.loadImage('images/astrid400.png');
+    img = p.loadImage('Projeto/images/'+nomes[f]+'.png');
+    f++;
   }
 
   p.setup = function() {
     p.createCanvas(img.width, img.height);
+    p.print(p.canvas.id);
     p.strokeWeight(2);
     //image(img,0,0);
     for (let i =0; i<numero; i++){
       p.criarlinhas();
     }
-    p.background(0);
+  };
+
+  p.mousePressed = function() {
+    p.clear();
+    ls = [];
+    for (let i =0; i<numero; i++){
+      p.criarlinhas();
+    }
   };
 
   p.draw = function() {
@@ -86,4 +95,10 @@ const fotos = ( p ) => {
   }
 };
 
-let _fotos = new p5(fotos,"img_astrid");
+let nomes=["astrid","karel","luis"];
+f=0;
+let _foto1 = new p5(fotos,"img_astrid");
+let _foto2 = new p5(fotos,"img_karel");
+let _foto3 = new p5(fotos,"img_luis");
+
+let _fotos=[_foto1,_foto2,_foto3];
