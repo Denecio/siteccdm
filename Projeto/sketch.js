@@ -78,7 +78,7 @@ const ccdm = ( q ) => {
     }
   }
 
-  /*q.windowResized = function() {
+  q.windowResized = function() {
     if(window.innerWidth>700){
       num=225;
       vida=2;
@@ -87,6 +87,9 @@ const ccdm = ( q ) => {
       num=150;
       vida=1;
       ang=2;
+    }
+    for(let i = linhas.length-1; i>=0; i--){
+      linhas.splice(i,1);
     }
     q.resizeCanvas(window.innerWidth, window.innerHeight);
     fontsize=window.innerWidth*0.4;
@@ -101,7 +104,7 @@ const ccdm = ( q ) => {
     pg.fill(0);
     pg.textAlign(q.CENTER);
     pg.text(txt, pg.width/2, fontsize-bbox.y+5);
-  }*/
+  }
 
   class Linha {
 
