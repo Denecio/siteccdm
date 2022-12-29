@@ -9,7 +9,7 @@ window.onscroll = hidemenu;
   var posAtual = window.pageYOffset;
 
      if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual)) {
-     document.querySelector("header").style.top= "-73px";
+     document.querySelector("header").style.top= "-95px";
      console.log("down");
   } else {
     console.log("up");
