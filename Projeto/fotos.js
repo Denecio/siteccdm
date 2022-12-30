@@ -37,18 +37,27 @@ const fotos = ( p ) => {
     }
 }
 
-  let img;
-
+  let imgs=[];
   let ls = [];
   let numero = 50;
+  let resizeImg;
 
   p.preload= function() {
-    img = p.loadImage('Projeto/images/'+nomes[f]+'.png');
-    f++;
+      imgs[0] = p.loadImage('Projeto/images/'+nomes[f]+'_300.png');
+      imgs[1] = p.loadImage('Projeto/images/'+nomes[f]+'.png');
+      imgs[2] = p.loadImage('Projeto/images/'+nomes[f]+'_900.png');
+      f++;
   }
 
   p.setup = function() {
     p.createCanvas(window.innerWidth, window.innerHeight);
+    if(window.innerWidth<600){
+      resizeImg=imgs[0];
+    }else if(window.innerWidth<900){
+      resizeImg=imgs[1];
+    }else{
+      resizeImg=imgs[2];
+    }
     p.strokeWeight(2);
     //image(img,0,0);
     for (let i =0; i<numero; i++){
@@ -80,13 +89,38 @@ const fotos = ( p ) => {
 
   p.windowResized = function() {
     p.resizeCanvas(window.innerWidth, window.innerHeight);
+    if(window.innerWidth<600){
+      resizeImg=imgs[0];
+    }else if(window.innerWidth<900){
+      resizeImg=imgs[1];
+    }else{
+      resizeImg=imgs[2];
+    }
+    ls = [];
+    for (let i =0; i<numero; i++){
+      p.criarlinhas();
+    }
   };
+
+  p.novo = function(){
+    ls = [];
+    if(window.innerWidth<600){
+      resizeImg=imgs[0];
+    }else if(window.innerWidth<900){
+      resizeImg=imgs[1];
+    }else{
+      resizeImg=imgs[2];
+    }
+    for (let i =0; i<numero; i++){
+      p.criarlinhas();
+    }
+  }
 
   p.criarlinhas = function(){
     const x = p.random(p.width);
     const y = p.random(p.height);
-    let c=img.get(x,y);
-    ls.push(new Linha2(x, y, img));
+    let c=resizeImg.get(x,y);
+    ls.push(new Linha2(x, y, resizeImg));
   }
 };
 
@@ -96,4 +130,4 @@ let _foto1 = new p5(fotos,"img_astrid");
 let _foto2 = new p5(fotos,"img_karel");
 let _foto3 = new p5(fotos,"img_luis");
 
-let _fotos=[_foto1,_foto2,_foto3];
+let _fotos = [_foto1,_foto2,_foto3];

@@ -8,13 +8,28 @@ function hidemenu() {
   let orador=false;
   background.classList.remove("hidden");
   _ccdm.loop();
-  for(var i = 0; i < el.length; i++){
-    var visible = isElementOnScreen(el[i]);
-    if(visible){
-      imagens[i].classList.remove('hidden');
-      _fotos[i].loop();
-      orador=true;
-    } else {
+  var elvisible = isElementVisible(el);
+ 
+  if(elvisible){
+    for(let i = 0; i<p.length;i++){
+      if(isElementOnScreen(p[i])){
+        imagens[i].classList.remove("hidden");
+        imagens[i].classList.remove("fade-out");
+        imagens[i].classList.add("fade-in");
+        _fotos[i].loop();
+      }
+      else{
+        imagens[i].classList.remove("fade-in");
+        imagens[i].classList.add("fade-out")
+        _fotos[i].noLoop();
+        setTimeout(function(){
+        _fotos[i].clear();
+        }, 500);
+      }
+    }
+    orador=true;
+  } else {
+    for(let i = 0; i<p.length;i++){
       imagens[i].classList.add('hidden');
       _fotos[i].noLoop();
     }
@@ -36,11 +51,25 @@ function hidemenu() {
 }
 
 var imagens = document.querySelectorAll('.imgs');
-var el = document.querySelectorAll('.p1');
+var el = document.querySelector('#oradores');
+var p=document.querySelectorAll('.p1');
+
+function isElementVisible(element) {
+  var rect = element.getBoundingClientRect();
+  var html = document.documentElement;
+  //return wether you can see the element or not
+  return (
+    rect.bottom > 0 &&
+    rect.top < (window.innerHeight || html.clientHeight) &&
+    rect.right > 0 &&
+    rect.left < (window.innerWidth || html.clientWidth)
+  );
+}
 
 function isElementOnScreen(element) {
   var rect = element.getBoundingClientRect();
   var html = document.documentElement;
+  //return wether you can see the element or not
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
