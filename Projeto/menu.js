@@ -5,7 +5,7 @@ window.onscroll = hidemenu;
 function hidemenu() {
   var posAtual = window.pageYOffset;
 
- /* for(var i = 0; i < el.length; i++){
+  for(var i = 0; i < el.length; i++){
     var visible = isElementOnScreen(el[i]);
     if(visible){
       el[i].classList.remove('hidden');
@@ -14,14 +14,18 @@ function hidemenu() {
       el[i].classList.add('hidden');
       _fotos[i].noLoop();
     }
-  }*/
+  }
 
-  if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual)) {
+  if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || clicou) {
      document.querySelector("header").style.top= "-73px";
   } else {
     document.querySelector("header").style.top= "0px";
- }
+    console.log("mostrou");
+  }
 
+  if(posAtual == posAnterior){
+    clicou=false;
+  }
   posAnterior = posAtual;
 }
 
@@ -39,11 +43,12 @@ function isElementOnScreen(element) {
   );
 }
 
+let clicou;
 var e = document.querySelectorAll(".botao");
 for(let i = 0; i<e.length;i++){
-  e[i].addEventListener("click", hidemenu);
+  e[i].addEventListener("click", clickmenu);
 }
+
 function clickmenu() {
-  console.log("hi");
-  document.querySelector("header").style.top= "-73px";
+  clicou=true;
 }
