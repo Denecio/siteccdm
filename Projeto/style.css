@@ -64,8 +64,11 @@ h1{
 
 header{
   /*background-color: black;*/
-  position: sticky;
-  top: 0px;
+  position: fixed;
+  width:45vw;
+  margin-left:27.5vw;
+  margin-right:27.5vw;
+  top: 0px; 
   transition:  top 600ms;
   transition-timing-function: ease-in-out;
 }
@@ -84,7 +87,7 @@ header{
 }
 
 .menu a{
-  font-size: 3.5em;
+  font-size: 2.5em;
 }
 
 .menu a:hover{
@@ -106,7 +109,7 @@ a{
   font-size:3em;
   font-family: RCBold;
   margin: 50px 0px;
-  padding-top: 100px;
+ /* padding-top: 100px;*/
 }
 
 .texto{
@@ -189,9 +192,9 @@ a{
   }
 
   header{
-    width:100%;
-    position:fixed;
-    top: 0px;
+    width:90vw;
+    margin:0vw 10vw;
+
   }
 
   .menu{
@@ -210,7 +213,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
-    padding-top:190px;
+    /*padding-top:190px;*/
   }
 
   #cont{
@@ -242,9 +245,9 @@ a{
   }
 
   header{
-    width:100%;
-    position:fixed;
-    top: 0px;
+    width:80vw;
+    margin-left:10vw;
+    margin-right: 10vw;
   }
 
   .menu{
@@ -260,7 +263,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
-    padding-top:220px;
+    /*padding-top:220px;*/
   }
 
   #cont{
@@ -291,6 +294,12 @@ a{
     margin-right: 13%;
   }
 
+header{
+  width:74vw;
+  margin-left:13vw;
+  margin-right: 13vw;
+}
+
   .menu{
     flex-direction: column;
     padding:20px 0px;
@@ -303,7 +312,7 @@ a{
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
-    padding-top:200px;
+    /*padding-top:200px;*/
   }
 
   #cont{
@@ -328,14 +337,23 @@ a{
 }
 
 @media only screen and (min-width:840px) and (max-width:990px) {
+ 
   .menu a{
-    font-size: 2.5em;
+    font-size: 2.4em;
   }
 
+
+  header{
+    width:60vw;
+    margin-left:20vw;
+    margin-right:20vw;
+  }
+  
+  
   .titulo{
     font-size:2.5em;
     margin: 25px 0px;
-    padding-top: 80px;
+    /*padding-top: 80px;*/
 
   }
 
@@ -361,9 +379,16 @@ a{
 
 @media only screen and (min-width:990px) and (max-width:1250px) {
   .menu a{
-    font-size: 3em;
+    font-size: 2.5em;
   }
 
+  header{
+    width:60vw;
+    margin-left:20vw;
+    margin-right:20vw;
+  }
+  
+  
   .titulo{
     font-size:3em;
     margin: 25px 0px;
