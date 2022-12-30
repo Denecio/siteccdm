@@ -40,9 +40,10 @@ body{
 }
 
 #canvas {
-  display: block;
   position: fixed;
   z-index: -1;
+  top: 0px;
+  left: 0px;
 }
 
 #conteudo{
@@ -146,10 +147,12 @@ a{
   /*padding: 20px 0px 0px 0px;*/
 }
 
-.img1{
-  width:400px;
-  height: auto;
-  align-self: center;
+.imgs{
+  position: fixed;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
 }
 
 .nome{
@@ -184,7 +187,7 @@ a{
 }
 
 .hidden{
-  visibility: hidden;
+  display: none;
 }
 
 @media only screen and (max-width:500px){

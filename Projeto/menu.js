@@ -1,44 +1,50 @@
 var posAnterior = window.pageYOffset;
+var background = document.querySelector("#canvas");
 
 window.onscroll = hidemenu;
 
 function hidemenu() {
   var posAtual = window.pageYOffset;
-
+  let orador=false;
+  background.classList.remove("hidden");
+  _ccdm.loop();
   for(var i = 0; i < el.length; i++){
     var visible = isElementOnScreen(el[i]);
     if(visible){
-      el[i].classList.remove('hidden');
+      imagens[i].classList.remove('hidden');
       _fotos[i].loop();
+      orador=true;
     } else {
-      el[i].classList.add('hidden');
+      imagens[i].classList.add('hidden');
       _fotos[i].noLoop();
     }
   }
-
-  if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || clicou) {
+  if(orador){
+    background.classList.add("hidden");
+    _ccdm.noLoop();
+  }
+  if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || (posAnterior > posAtual && clicou) ){
      document.querySelector("header").style.top= "-73px";
   } else {
     document.querySelector("header").style.top= "0px";
-    console.log("mostrou");
   }
 
-  if(posAtual == posAnterior){
+  if(posAtual == posAnterior-1 || posAtual == posAnterior+1){
     clicou=false;
   }
   posAnterior = posAtual;
 }
 
-
-var el = document.querySelectorAll('.imgs');
+var imagens = document.querySelectorAll('.imgs');
+var el = document.querySelectorAll('.p1');
 
 function isElementOnScreen(element) {
   var rect = element.getBoundingClientRect();
   var html = document.documentElement;
   return (
-    rect.top >= -rect.height &&
+    rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || html.clientHeight)+rect.height &&
+    rect.bottom <= (window.innerHeight || html.clientHeight) &&
     rect.right <= (window.innerWidth || html.clientWidth)
   );
 }

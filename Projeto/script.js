@@ -1,5 +1,4 @@
 var altura = window.innerHeight;
-console.log(altura);
 
 document.addEventListener("scroll",funcaoScroll);
 

@@ -1,53 +1,38 @@
 const fotos = ( p ) => {
   class Linha2 {
 
-    constructor(x, y, size, img) {
-        this.pos=[];
-        this.vel=[];
-        this.cor=[];
-        this.size=size;
-        this.img=img;
+    constructor(x, y, img) {
         this.acc = p.createVector(0, 0);
-        this.pos.push(p.createVector(x, y));
-        this.vel.push(p.createVector(0, 0));
-        this.cor.push(this.img.get(this.pos[0].x,this.pos[0].y));
+        this.pos = p.createVector(x, y);
+        this.prevPos = this.pos.copy();
+        this.vel = p.createVector(0, 0);
         this.xoff = p.random(1000);
+        this.cor=[];
+        this.img=img;
     }
     
     desenha(){
-        let ult=this.pos.length-1;
-        if(ult+1<this.size){
-            this.pos.push(p.createVector(this.pos[ult].x, this.pos[ult].y));
-            this.vel.push(p.createVector(this.vel[ult].x, this.vel[ult].y));
-            this.cor.push(this.img.get(this.pos[ult].x,this.pos[ult].y));
-            ult++;
-        } else {
-            this.pos.shift();
-            this.vel.shift();
-            this.cor.shift();
-            ult--;
-        }
-
         let angle = p.noise(this.xoff) * p.TWO_PI * 4;
-        this.acc= p5.Vector.fromAngle(angle, 1);
+        this.acc= p5.Vector.fromAngle(angle, 2);
    
-        this.vel[ult].add(this.acc);
-        this.vel[ult].limit(2);
+        this.vel.add(this.acc);
+        this.vel.limit(2);
 
-        this.pos[ult].add(this.vel[ult]);
+        this.pos.add(this.vel);
 
         this.acc.mult(0);
         
-        this.pos[ult].x=p.constrain(this.pos[ult].x,0,p.width);
-        this.pos[ult].y=p.constrain(this.pos[ult].y,0,p.height);
+        this.pos.x=p.constrain(this.pos.x,0,p.width);
+        this.pos.y=p.constrain(this.pos.y,0,p.height);
 
-        this.c=this.img.get(this.pos[ult].x,this.pos[ult].y);
-  
+        this.cor = this.img.get(this.pos.x, this.pos.y);
         // Draw a line connecting the points
-        for ( let j = 1; j < ult-1; j++ ) {
-            p.stroke(p.color(this.cor[j]));
-            p.line(this.pos[j - 1].x, this.pos[j - 1].y, this.pos[j].x, this.pos[j].y);
-        }
+        p.stroke(p.color(this.cor));
+        
+        p.line(this.pos.x+(p.width/2-this.img.width/2), this.pos.y+(p.height/2-this.img.height/2), this.prevPos.x+(p.width/2-this.img.width/2), this.prevPos.y+(p.height/2-this.img.height/2));
+        // Update the previous position
+        this.prevPos = this.pos.copy();
+        // Increment x dimension for noise
         this.xoff += 0.02;
     }
 }
@@ -55,7 +40,7 @@ const fotos = ( p ) => {
   let img;
 
   let ls = [];
-  let numero = 100;
+  let numero = 50;
 
   p.preload= function() {
     img = p.loadImage('Projeto/images/'+nomes[f]+'.png');
@@ -63,12 +48,25 @@ const fotos = ( p ) => {
   }
 
   p.setup = function() {
-    p.createCanvas(img.width, img.height);
-    p.print(p.canvas.id);
+    p.createCanvas(window.innerWidth, window.innerHeight);
     p.strokeWeight(2);
     //image(img,0,0);
     for (let i =0; i<numero; i++){
       p.criarlinhas();
+    }
+  };
+
+  p.draw = function() {
+    //p.clear();
+    for(let i = 0; i< numero; i++){
+      ls[i].desenha();
+      //if the opacity is 0, move the line to a new random position
+      if (p.alpha(ls[i].cor) == 0) {
+        ls[i].pos.x = p.random(p.width);
+        ls[i].pos.y = p.random(p.height);
+        ls[i].prevPos.x = ls[i].pos.x;
+        ls[i].prevPos.y = ls[i].pos.y;
+      }
     }
   };
 
@@ -80,18 +78,15 @@ const fotos = ( p ) => {
     }
   };
 
-  p.draw = function() {
-    //p.clear();
-    for(let i = 0; i< numero; i++){
-      ls[i].desenha();
-    }
+  p.windowResized = function() {
+    p.resizeCanvas(window.innerWidth, window.innerHeight);
   };
 
   p.criarlinhas = function(){
     const x = p.random(p.width);
     const y = p.random(p.height);
     let c=img.get(x,y);
-    ls.push(new Linha2(x, y, 100, img));
+    ls.push(new Linha2(x, y, img));
   }
 };
 
