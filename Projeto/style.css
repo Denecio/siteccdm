@@ -65,9 +65,11 @@ h1{
 header{
   /*background-color: black;*/
   position: fixed;
-  width:45vw;
-  margin-left:27.5vw;
-  margin-right:27.5vw;
+  width:60vw;
+  padding-left: 7.5vw;
+  padding-right:7.5vw;
+  margin-left:20vw;
+  margin-right:20vw;
   top: 0px; 
   transition:  top 600ms;
   transition-timing-function: ease-in-out;
@@ -193,6 +195,7 @@ a{
 
   header{
     width:90vw;
+    padding:0;
     margin:0vw 10vw;
 
   }
@@ -240,12 +243,12 @@ a{
 @media only screen and (min-width:500px) and (max-width:700px){
 
   #conteudo{
-    margin-left:10%;
-    margin-right: 10%;
+    width:80%;
   }
 
   header{
     width:80vw;
+    padding:0;
     margin-left:10vw;
     margin-right: 10vw;
   }
@@ -290,12 +293,12 @@ a{
 @media only screen and (min-width:700px) and (max-width:840px) {
 
   #conteudo{
-    margin-left:13%;
-    margin-right: 13%;
+    width:74%;
   }
 
 header{
   width:74vw;
+  padding:0;
   margin-left:13vw;
   margin-right: 13vw;
 }
@@ -345,6 +348,7 @@ header{
 
   header{
     width:60vw;
+    padding:0;
     margin-left:20vw;
     margin-right:20vw;
   }
@@ -384,6 +388,7 @@ header{
 
   header{
     width:60vw;
+    padding:0;
     margin-left:20vw;
     margin-right:20vw;
   }
