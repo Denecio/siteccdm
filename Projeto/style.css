@@ -181,6 +181,10 @@ a{
   color:#d01c1f;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
 @media only screen and (max-width:500px){
 
   #conteudo{
