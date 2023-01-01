@@ -6,8 +6,7 @@ window.onscroll = hidemenu;
 function hidemenu() {
   var posAtual = window.pageYOffset;
   let orador=false;
-  background.classList.remove("hidden");
-  _ccdm.loop();
+
   var elvisible = isElementVisible(el);
  
   if(elvisible){
@@ -27,17 +26,24 @@ function hidemenu() {
         }, 500);
       }
     }
-    orador=true;
+    background.classList.remove("fade-in");
+    background.classList.add("fade-out");
+    _ccdm.noLoop();
+    setTimeout(function(){
+      _ccdm.clear();
+      background.classList.add("hidden");
+    }, 500);
   } else {
+    background.classList.remove("hidden");
     for(let i = 0; i<p.length;i++){
       imagens[i].classList.add('hidden');
       _fotos[i].noLoop();
     }
+    background.classList.remove("fade-out");
+    background.classList.add("fade-in");
+    _ccdm.loop();
   }
-  if(orador){
-    background.classList.add("hidden");
-    _ccdm.noLoop();
-  }
+
   if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || (posAnterior > posAtual && clicou) ){
      document.querySelector("header").style.top= "-73px";
   } else {
