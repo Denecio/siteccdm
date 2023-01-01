@@ -71,19 +71,16 @@ const fotos = ( p ) => {
   };
 
   p.mousePressed = function() {
-    p.clear();
-    ls = [];
-    for (let i =0; i<numero; i++){
-      p.criarlinhas();
-    }
+    p.novo();
   };
 
   p.windowResized = function() {
     p.resizeCanvas(window.innerWidth, window.innerHeight);
-    p.novo();
+    p.novo ();
   };
 
   p.novo = function(){
+    p.clear();
     if(window.innerWidth<500){
       resizeImg=imgs[0];
     }else if(window.innerWidth<1100){
