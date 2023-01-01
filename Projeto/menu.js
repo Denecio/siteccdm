@@ -44,9 +44,11 @@ function hidemenu() {
     _ccdm.loop();
   }
 
-  if (window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || (posAnterior > posAtual && clicou) ){
-     document.querySelector("header").style.top= "-73px";
-  } else {
+  if (window.matchMedia("(max-width: 800px)").matches && (posAnterior < posAtual) || (posAnterior > posAtual && clicou) ){
+     document.querySelector("header").style.top= "-421px";
+  } else if(window.matchMedia("(min-width: 800px)").matches && (posAnterior < posAtual) || (posAnterior > posAtual && clicou)){
+    document.querySelector("header").style.top= "-71px";
+  }else {
     document.querySelector("header").style.top= "0px";
   }
 
@@ -59,6 +61,7 @@ function hidemenu() {
 var imagens = document.querySelectorAll('.imgs');
 var el = document.querySelector('#oradores');
 var p=document.querySelectorAll('.p1');
+var con=document.querySelector('#contactos');
 
 function isElementVisible(element) {
   var rect = element.getBoundingClientRect();
