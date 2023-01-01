@@ -38,7 +38,7 @@ const fotos = ( p ) => {
 }
 
   let imgs=[];
-  let ls = [];
+  let ls;
   let numero = 50;
   let resizeImg;
 
@@ -51,18 +51,9 @@ const fotos = ( p ) => {
 
   p.setup = function() {
     p.createCanvas(window.innerWidth, window.innerHeight);
-    if(window.innerWidth<600){
-      resizeImg=imgs[0];
-    }else if(window.innerWidth<900){
-      resizeImg=imgs[1];
-    }else{
-      resizeImg=imgs[2];
-    }
     p.strokeWeight(2);
     //image(img,0,0);
-    for (let i =0; i<numero; i++){
-      p.criarlinhas();
-    }
+    p.novo();
   };
 
   p.draw = function() {
@@ -89,28 +80,18 @@ const fotos = ( p ) => {
 
   p.windowResized = function() {
     p.resizeCanvas(window.innerWidth, window.innerHeight);
-    if(window.innerWidth<600){
-      resizeImg=imgs[0];
-    }else if(window.innerWidth<900){
-      resizeImg=imgs[1];
-    }else{
-      resizeImg=imgs[2];
-    }
-    ls = [];
-    for (let i =0; i<numero; i++){
-      p.criarlinhas();
-    }
+    p.novo();
   };
 
   p.novo = function(){
-    ls = [];
-    if(window.innerWidth<600){
+    if(window.innerWidth<500){
       resizeImg=imgs[0];
-    }else if(window.innerWidth<900){
+    }else if(window.innerWidth<1100){
       resizeImg=imgs[1];
     }else{
       resizeImg=imgs[2];
     }
+    ls = [];
     for (let i =0; i<numero; i++){
       p.criarlinhas();
     }
