@@ -29,7 +29,7 @@ const ccdm = ( q ) => {
     pg.textFont(myFont);
     pg.fill(0);
     pg.textAlign(q.CENTER);
-    pg.text(txt, pg.width/2, fontsize-bbox.y+5);
+    pg.text(txt, pg.width/2, fontsize-bbox.y*0.9);
     if(window.innerWidth>700){
       num=225;
       ang=4;
@@ -95,15 +95,15 @@ const ccdm = ( q ) => {
     fontsize=window.innerWidth*0.4;
     q.textSize(fontsize);
     let bbox = myFont.textBounds(txt, 0, fontsize, fontsize);
-    len=bbox.w+20;
-    alt=bbox.h+10;
+    len=bbox.w+bbox.w*0.05;
+    alt=bbox.h+bbox.h*0.05;
     pg = q.createGraphics(len, alt);
     pg.background(125);
     pg.textSize(fontsize);
     pg.textFont(myFont);
     pg.fill(0);
     pg.textAlign(q.CENTER);
-    pg.text(txt, pg.width/2, fontsize-bbox.y+5);
+    pg.text(txt, pg.width/2, fontsize-bbox.y*0.9);
   }
 
   class Linha {

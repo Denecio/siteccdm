@@ -71,7 +71,9 @@ const fotos = ( p ) => {
   };
 
   p.mousePressed = function() {
-    p.novo();
+    if(p.width>700){
+      p.novo();
+    }
   };
 
   p.windowResized = function() {
