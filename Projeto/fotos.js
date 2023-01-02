@@ -71,7 +71,7 @@ const fotos = ( p ) => {
   };
 
   p.mousePressed = function() {
-    if(p.width>700){
+    if(p.width>900){
       p.novo();
     }
   };
